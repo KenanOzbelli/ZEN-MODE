@@ -5,12 +5,18 @@ const { JWTVerifier } = require('../../lib/passport');
 const jwt = require('jsonwebtoken');
 
 usersController.post('/', (req, res) => {
-  const { email, password } = req.body;
+  const { email, password, quote } = req.body;
 
-  db.Users.create({ email, password })
+  db.Users.create({ email, password, quote })
     .then(user => res.json(user))
     .catch(err => res.json(err));
 });
+usersController.put('/update', (req, res) => {
+const { quote } = req.body;
+db.Users.update({$push:{ quote}})
+  .then(user => res.json(user))
+  .catch(err => res.json(err));
+})
 
 usersController.get('/me', JWTVerifier, (req, res) => {
   res.json(req.user);

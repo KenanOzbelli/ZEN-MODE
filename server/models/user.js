@@ -18,6 +18,11 @@ const UserSchema = new Schema({
       'Password should be four characters or longer'
     ]
   },
+  quote: [{
+    type:String,
+    trim:true
+  }]
+
 })
 
 class newUser {
