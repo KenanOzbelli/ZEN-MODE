@@ -1,0 +1,20 @@
+.titleApp{
+    font-weight: bolder;
+    font-size:100px;
+    margin:10rem auto;
+    font-family: 'Open Sans', sans-serif;
+    border: 10px solid transparent;
+    border-image: linear-gradient(to right, #007cff, #ff3052, #ffcb00);
+    color:#ff3052;
+    border-image-slice: 1;
+    padding: 10rem ;
+    display: block;
+    text-align: center;
+    cursor: default;
+    animation: spin infinite 3s;
+}
+
+@keyframes spin {
+    from{ filter: hue-rotate(0deg)}
+    to{filter: hue-rotate(360deg)}
+}

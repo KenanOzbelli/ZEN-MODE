@@ -1,30 +1,19 @@
-import React, { Component } from 'react';
+import React, {Component} from 'react'
+import './index.css'
 
-import logo from './logo.svg';
 
-class HomePage extends Component {
-  render() {
-    return (
-      <div className='Home'>
-        <div className='row'>
-          <div className='col'>
-            <img src={logo} className='App-logo' alt='logo' />
-            <p>
-              Edit <code>src/pages/Home.js</code> and save to reload.
-            </p>
-            <a
-              className='App-link'
-              href='https://reactjs.org'
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Learn React
-            </a>
-          </div>
-        </div>
-      </div>
-    );
-  }
+export default class Home extends Component {
+
+    render(){
+        return(
+            <>
+            <div>
+                <h1 className='titleApp'>Zen Mode</h1>
+            </div>
+            </>
+        )
+    }
+
+
+
 }
-
-export default HomePage;

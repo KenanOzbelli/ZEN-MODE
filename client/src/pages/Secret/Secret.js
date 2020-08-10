@@ -37,16 +37,13 @@ class Secret extends Component {
                 ? <div className='alert alert-danger'>{this.state.error}</div>
                 : <div>
                   <p>Shh, the secret is...</p>
-                  <p><em>{this.state.data.quote.map( (line) => {
+                  <ul>
+                  {this.state.data.quote.map( (line, index) => {
                     return(
-                      <>
-                      <ul>
-                        <li style={{listStyle:'none'}}>{line}</li>
-                      </ul>
-                      </>
+                        <li style={{listStyle:'none'}} key={index} >{line}</li>
                     )
-
-                  })}</em></p>
+                  })}
+                  </ul>
                 </div>}
           </div>
         </div>

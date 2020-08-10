@@ -21,10 +21,7 @@ const UserSchema = new Schema({
   },
   quote: [{
     type:String,
-    trim:true,
-    validate: [(input) => {
-      return input.length >= 4
-    }, 'This is not a real quote']
+    trim:true
   }]
 })
 

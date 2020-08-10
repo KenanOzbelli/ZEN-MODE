@@ -13,7 +13,7 @@ usersController.post('/', (req, res) => {
 });
 usersController.put('/update', (req, res) => {
 const { quote } = req.body;
-db.Users.update({$push:{ quote}})
+db.Users.updateOne({$push:{ quote}})
   .then(user => res.json(user))
   .catch(err => res.json(err));
 })

@@ -29,6 +29,8 @@ mongoose.connect(
 mongoose.connection.on('error', err => {
   console.log(`Mongoose connection err:\n${err}`)
 })
+mongoose.set('useCreateIndex', true);
+
 
 //-- Middleware --------------------------------------------------------------
 app.use(logger(LOG_MODE));

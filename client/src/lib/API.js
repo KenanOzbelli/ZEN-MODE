@@ -8,7 +8,7 @@ export default {
     create: function (email, password, quote) {
       return axios.post('/api/users', { email, password, quote });
     },
-    updateOne:function (quote){
+    update:function (quote){
       return axios.put('/api/users/update', {quote});
     },
     getMe: function (authToken) {
