@@ -11,6 +11,7 @@ usersController.post('/', (req, res) => {
     .then(user => res.json(user))
     .catch(err => res.json(err));
 });
+
 usersController.put('/update', (req, res) => {
 const { quote } = req.body;
 db.Users.updateOne({$push:{ quote}})
