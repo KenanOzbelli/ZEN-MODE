@@ -8,12 +8,12 @@ export default class Home extends Component {
         return(
             <>
             <div>
-                <h1 className='titleApp'>Zen Mode</h1>
+                <h2 className='titleApp'>Zen Mode</h2>
             </div>
+            <span>
+                <p>Generate a Random Quote</p>
+            </span>
             </>
         )
     }
-
-
-
 }

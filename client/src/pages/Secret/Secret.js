@@ -6,12 +6,12 @@ import AuthContext from '../../contexts/AuthContext';
 
 class Secret extends Component {
   static contextType = AuthContext;
-
   state = {
     isLoading: true,
-    error: ""
+    error: "",
+    data:[]
   }
-
+  
   componentDidMount() {
     API.Users.getMe(this.context.authToken)
       .then(response => response.data)
@@ -20,7 +20,6 @@ class Secret extends Component {
         if (err.response.status === 401) {
           return this.setState({ error: "Unauthorized. Please login." });
         }
-
         console.log(err);
       })
       .finally(() => this.setState({ isLoading: false }));
@@ -36,9 +35,9 @@ class Secret extends Component {
               : this.state.error
                 ? <div className='alert alert-danger'>{this.state.error}</div>
                 : <div>
-                  <p>Shh, the secret is...</p>
+                  <p>Quotes Added..</p>
                   <ul>
-                  {this.state.data.quote.map( (line, index) => {
+                  {this.state.data.quote.map((line, index) => {
                     return(
                         <li style={{listStyle:'none'}} key={index} >{line}</li>
                     )
