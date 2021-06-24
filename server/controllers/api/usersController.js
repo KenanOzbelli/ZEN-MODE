@@ -5,19 +5,16 @@ const { JWTVerifier } = require('../../lib/passport');
 const jwt = require('jsonwebtoken');
 
 usersController.post('/', (req, res) => {
-  const { email, password, quote } = req.body;
-
-  db.Users.create({ email, password, quote })
+  const { email, password } = req.body;
+  
+  db.Users.create({ email, password })
     .then(user => res.json(user))
-    .catch(err => res.json(err));
+    .catch(err => {
+      err.message.includes('duplicate')?      
+      res.status(400).json({message:"User with Email Already Exists Please Login!"}):
+      res.status(400).json({message:"User Error Please Check Email or Password"})
+    });
 });
-
-usersController.put('/update', (req, res) => {
-const { quote } = req.body;
-db.Users.updateOne({$push:{ quote}})
-  .then(user => res.json(user))
-  .catch(err => res.json(err));
-})
 
 usersController.get('/me', JWTVerifier, (req, res) => {
   res.json(req.user);

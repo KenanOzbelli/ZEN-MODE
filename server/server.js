@@ -24,7 +24,8 @@ const app = express();
 //-- Mongoose Setup ----------------------------------------------------------
 mongoose.connect(
   process.env.MONGODB_URI ||
-  'mongodb://localhost/Wisdom_Quotes', { useNewUrlParser: true }
+  'mongodb://localhost/Wisdom_Quotes', 
+  { useNewUrlParser: true, useUnifiedTopology: true  }
 )
 mongoose.connection.on('error', err => {
   console.log(`Mongoose connection err:\n${err}`)

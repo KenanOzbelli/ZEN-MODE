@@ -5,7 +5,7 @@ const UserSchema = new Schema({
   email: {
     type: String,
     trim: true,
-    required: 'Email address is required',
+    required: true,
     unique:true,
   },
   password: {
@@ -18,11 +18,7 @@ const UserSchema = new Schema({
       },
       'Password should be four characters or longer'
     ]
-  },
-  quote: [{
-    type:String,
-    trim:true
-  }]
+  }
 })
 
 class newUser {

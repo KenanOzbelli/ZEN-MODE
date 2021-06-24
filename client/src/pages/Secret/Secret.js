@@ -9,13 +9,11 @@ class Secret extends Component {
   state = {
     isLoading: true,
     error: "",
-    data:[]
   }
   
   componentDidMount() {
     API.Users.getMe(this.context.authToken)
       .then(response => response.data)
-      .then(data => this.setState({ data }))
       .catch(err => {
         if (err.response.status === 401) {
           return this.setState({ error: "Unauthorized. Please login." });
@@ -35,14 +33,7 @@ class Secret extends Component {
               : this.state.error
                 ? <div className='alert alert-danger'>{this.state.error}</div>
                 : <div>
-                  <p>Quotes Added..</p>
-                  <ul>
-                  {this.state.data.quote.map((line, index) => {
-                    return(
-                        <li style={{listStyle:'none'}} key={index} >{line}</li>
-                    )
-                  })}
-                  </ul>
+                  <h1>WELCOME</h1>
                 </div>}
           </div>
         </div>

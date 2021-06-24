@@ -19,9 +19,16 @@ class RegistrationForm extends Component {
 
   handleSubmit = event => {
     const { email, password, passwordConfirm } = this.state;
-
-    this.props.onSubmit(email, password, passwordConfirm);
     event.preventDefault();
+    if(!email || !password || !passwordConfirm){
+      console.log('missing email or password')
+      return
+    }
+    if(password != passwordConfirm){
+      console.log('Passwords dont match!')
+      return
+    }
+    this.props.onSubmit(email, password);
   }
 
   render() {

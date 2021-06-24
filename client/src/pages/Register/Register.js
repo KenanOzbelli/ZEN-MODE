@@ -15,14 +15,13 @@ class Register extends Component {
 
   handleSubmit = (email, password) => {
     API.Users.create(email, password)
-      .then(response => {
-        this.setState({ redirectToReferrer: true })
+      .then((response)=> {
+        this.setState({redirectToReferrer: true})
       })
       .catch(err => {
-        if (err.response.status === 401) {
-          this.setState({ error: "Sorry, that email/password combination is not valid. Please try again." });
-        }
-      });
+        const message = err.response.data.message
+        this.setState({error: message })
+      })
   }
 
   render() {
