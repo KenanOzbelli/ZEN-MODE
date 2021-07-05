@@ -24,6 +24,10 @@ class Register extends Component {
       })
   }
 
+  passworderrHandle = (value) => {
+    this.setState({error: value})
+  }
+
   render() {
     const { from } = this.props.location.state || { from: { pathname: "/login" } };
     const { redirectToReferrer } = this.state;
@@ -49,7 +53,7 @@ class Register extends Component {
           </div>}
         <div className='row'>
           <div className='col'>
-            <RegistrationForm onSubmit={this.handleSubmit} />
+            <RegistrationForm onSubmit={this.handleSubmit} passwordHandle={this.passworderrHandle} />
           </div>
         </div>
       </div>

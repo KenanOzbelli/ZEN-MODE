@@ -10,10 +10,31 @@ usersController.post('/', (req, res) => {
   db.Users.create({ email, password })
     .then(user => res.json(user))
     .catch(err => {
-      err.message.includes('duplicate')?      
-      res.status(400).json({message:"User with Email Already Exists Please Login!"}):
-      res.status(400).json({message:"User Error Please Check Email or Password"})
+      if(err.name === 'ValidationError') 
+          return err = handleValidationError(err,res);
+      if(err.code && err.code == 11000) 
+          return err = handleDuplicateKeyError(err, res);
     });
+
+    handleValidationError = (err, res) => {
+      let errors = Object.values(err.errors).map(el => el.message);
+      let fields = Object.values(err.errors).map(el => el.path);
+      let code = 400;
+
+      if(errors.length > 1){
+        const formattedErrors = errors.join(' ');
+        res.status(code).send({message: formattedErrors, fields: fields})
+      }else{
+        res.status(code).send({message: errors, fields: fields});
+      }
+    }
+    handleDuplicateKeyError = (err, res) => {
+        const field = Object.keys(err.keyValue);
+        const code = 409;
+
+        res.status(code).send({message: `An account with that ${field} already exists.`});
+
+    }
 });
 
 usersController.get('/me', JWTVerifier, (req, res) => {

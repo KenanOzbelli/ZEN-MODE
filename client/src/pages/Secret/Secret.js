@@ -22,7 +22,6 @@ class Secret extends Component {
       })
       .finally(() => this.setState({ isLoading: false }));
   }
-
   render() {
     return (
       <div className='Secret'>
