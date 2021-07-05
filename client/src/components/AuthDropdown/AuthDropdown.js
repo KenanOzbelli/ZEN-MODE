@@ -1,20 +1,29 @@
 import React, { Component } from 'react';
-// import { Link } from 'react-router-dom';
 import Gravatar from 'react-gravatar';
-
+import './AuthDropdown.css'
 import AuthContext from '../../contexts/AuthContext';
 
 class AuthDropdown extends Component {
   static contextType = AuthContext;
 
   state = {
-    isOpen: false
+    isOpen: 'none'
+  }
+
+  componentDidMount(){
+    document.body.addEventListener('click', this.toggleClose)
+  }
+  componentWillUnmount(){
+    document.body.removeEventListener('click', this.toggleClose)
   }
 
   toggleOpen = () => {
     this.setState({
-      isOpen: !this.state.isOpen
+      isOpen: 'block'
     });
+  }
+  toggleClose = () => {
+    if(this.state.isOpen === 'block'){this.setState({isOpen: 'none'})}
   }
 
   handleLogout = () => {
@@ -26,15 +35,18 @@ class AuthDropdown extends Component {
     const { user } = this.context;
     const { isOpen } = this.state;
 
-    const dropdownMenuClass = `dropdown-menu dropdown-menu-right ${isOpen && 'show'}`;
 
     return (
-      <li className="nav-item dropdown">
-        <button className="btn btn-link dropdown-toggle" onClick={this.toggleOpen} id="navbarDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+      <li className="nav-item" style={{position:'relative'}}>
+        <button className="btn text-white" onClick={this.toggleOpen} aria-haspopup="true" aria-expanded="false">
           <Gravatar className="rounded-circle" email={user.email} size={30} /> {user.email}
         </button>
-        <div className={dropdownMenuClass} aria-labelledby="navbarDropdown">
-          <div className="dropdown-item" onClick={this.handleLogout}>Logout</div>
+        <div className="card userCard" aria-hidden="true" style={{display:isOpen}}>
+          <Gravatar className="rounded-circle" email={user.email} size={50} style={{margin:'0 auto', marginBottom:'1rem'}} />
+          <p>{user.email}</p>
+          <button className="btn btn-secondary" onClick={this.handleLogout}>
+            Sign Out
+          </button>
         </div>
       </li>
     );
