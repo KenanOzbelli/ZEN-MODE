@@ -39,7 +39,7 @@ class Login extends Component {
   }
 
   render() {
-    const { from } = this.props.location.state || { from: { pathname: "/Wisdom" } };
+    const { from } = this.props.location.state || { from: { pathname: "/inspiration" } };
     const { redirectToReferrer } = this.state;
 
     if (redirectToReferrer) {

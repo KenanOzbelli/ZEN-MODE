@@ -1,8 +1,7 @@
 .titleApp{
     font-weight: bolder;
     font-size:100px;
-    margin:5rem auto;
-    font-family: 'Open Sans', sans-serif;
+    margin: 3rem auto;
     border: 10px solid transparent;
     border-image: linear-gradient(to right, #007cff, #ff3052, #ffcb00);
     color:#ff3052;
@@ -17,4 +16,7 @@
 @keyframes spin {
     from{ filter: hue-rotate(0deg)}
     to{filter: hue-rotate(360deg)}
+}
+.btnQuotes{
+    box-shadow: 2px 2px #ddd;
 }

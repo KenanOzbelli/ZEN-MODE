@@ -50,14 +50,14 @@ class App extends Component {
   render() {
     return (
       <AuthContext.Provider value={this.state.auth}>
-        <div className='App'>
+        <div className='App overlay'>
           <Navigation />
           <div className='container'>
             <Switch>
               <Route exact path='/' component={Home} />
               <Route path='/login' component={Login} />
               <Route path='/register' component={Register} />
-              <PrivateRoute path='/wisdom' component={Secret} />
+              <PrivateRoute path='/inspiration' component={Secret} />
               <Route component={NotFound} />
             </Switch>
           </div>

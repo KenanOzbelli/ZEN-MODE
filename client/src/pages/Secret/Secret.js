@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 //import { Redirect } from 'react-router-dom';
 
+import './Secret.css'
 import API from '../../lib/API';
 import AuthContext from '../../contexts/AuthContext';
 
@@ -31,8 +32,9 @@ class Secret extends Component {
               ? <div className='alert alert-success'>Loading...</div>
               : this.state.error
                 ? <div className='alert alert-danger'>{this.state.error}</div>
-                : <div>
-                  <h1>WELCOME</h1>
+                : <div className='card NQCard'>
+                  <h2>No Quotes Added....</h2>
+                  <p>You can add quotes <a href="/quotes">here</a>!</p>
                 </div>}
           </div>
         </div>
