@@ -50,7 +50,7 @@ class App extends Component {
   render() {
     return (
       <AuthContext.Provider value={this.state.auth}>
-        <div className='App overlay'>
+        <div className='App'>
           <Navigation />
           <div className='container'>
             <Switch>

@@ -13,7 +13,7 @@ export default class Home extends Component {
                 <div className="card">
                     <h4 className="card-header">Quote of the Day</h4>
                     <div className="card-body">
-                        <h5 class="m-3">Fear is the MindKiller</h5>
+                        <h5 className="m-3">Fear is the MindKiller</h5>
                         <p>- Frank Herbert</p>
                         <a href="/quotes" className="btn btn-secondary btnQuotes">Discover more here</a>
                     </div>
