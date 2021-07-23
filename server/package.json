@@ -1,5 +1,5 @@
 {
-  "name": "zen-mode-server",
+  "name": "inner-zen-server",
   "version": "1.0.0",
   "license": "MIT",
   "main": "server.js",

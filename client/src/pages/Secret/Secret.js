@@ -4,7 +4,8 @@ import React, { Component } from 'react';
 import './Secret.css'
 import API from '../../lib/API';
 import AuthContext from '../../contexts/AuthContext';
-
+import Banner from '../../components/Banner/Banner';
+import InspirationImg from '../../images/Inspiration.jpg'
 class Secret extends Component {
   static contextType = AuthContext;
   state = {
@@ -26,6 +27,7 @@ class Secret extends Component {
   render() {
     return (
       <div className='Secret'>
+        <Banner title='Inspiration' src={InspirationImg}/>
         <div className='row'>
           <div className='col'>
             {this.state.isLoading
